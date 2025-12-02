@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Github, Linkedin, Mail, FileText } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, scholar, Mail, FileText } from 'lucide-react';
 import { Button } from './ui/button';
 import { personalInfo } from '../mock';
 
@@ -13,7 +13,6 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
-      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
@@ -22,16 +21,14 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-4">
               <div className="inline-flex items-center px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium backdrop-blur-sm animate-slide-up">
-                <span className="w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
-                Available for Opportunities
+                From prototypes to papers — building with purpose
               </div>
               
               <h1 className="text-5xl md:text-7xl font-bold leading-tight animate-slide-up" style={{ animationDelay: '0.1s' }}>
-                Hi, I'm{' '}
+                {''}
                 <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
                   {personalInfo.name}
                 </span>
@@ -56,10 +53,10 @@ const Hero = () => {
                 <span className="text-cyan-400 font-semibold">10+ Projects</span>
               </div>
               <div className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-lg backdrop-blur-sm">
-                <span className="text-blue-400 font-semibold">2 Research Papers</span>
+                <span className="text-blue-400 font-semibold">45+ certifications</span>
               </div>
               <div className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg backdrop-blur-sm">
-                <span className="text-purple-400 font-semibold">Open Source</span>
+                <span className="text-purple-400 font-semibold">IEEE access Journal paper</span>
               </div>
             </div>
 
@@ -93,7 +90,6 @@ const Hero = () => {
               </Button>
             </div>
 
-            {/* Social Links */}
             <div className="flex items-center gap-4 animate-slide-up" style={{ animationDelay: '0.7s' }}>
               <a
                 href={personalInfo.github}
@@ -110,6 +106,14 @@ const Hero = () => {
                 className="p-3 bg-gray-800 hover:bg-blue-500/20 border border-gray-700 hover:border-blue-500 rounded-lg transition-all duration-300 hover:scale-110 group"
               >
                 <Linkedin className="w-6 h-6 text-gray-400 group-hover:text-blue-400 transition-colors" />
+              </a>
+              <a
+                href={personalInfo.scholar}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gray-800 hover:bg-cyan-500/20 border border-gray-700 hover:border-cyan-500 rounded-lg transition-all duration-300 hover:scale-110 group"
+              >
+                <scholar className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
               </a>
             </div>
           </div>

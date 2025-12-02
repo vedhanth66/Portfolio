@@ -1,14 +1,12 @@
-// Mock data for portfolio - Replace with your actual data later
-
 export const personalInfo = {
   name: "Vedhanth M",
   title: "B.Tech CSE 2nd Year",
-  tagline: "Full-Stack Developer | AI/ML Enthusiast | Problem Solver",
-  bio: "Passionate computer science student with a keen interest in building scalable web applications and exploring artificial intelligence. Currently focusing on full-stack development and machine learning projects. Always eager to learn new technologies and collaborate on innovative projects.",
-  email: "vedhanth.m@example.com",
-  github: "https://github.com/vedhanth",
-  linkedin: "https://linkedin.com/in/vedhanth-m",
-  scholar: "https://scholar.google.com/citations?user=example",
+  tagline: "Student @MIT | IBM certified Data Scientist | Meta certified Full stack developer | IEEE Student member | Researcher",
+  bio: "I am a Computer Science undergraduate at MIT Bengaluru bridging the gap between advanced research and scalable software engineering. My work spans the full computing stack—from architecting full-stack web platforms to publishing IEEE research on efficient deep learning. I don’t just write code; I design systems and build projects end-to-end with clean logic and clear intent. Whether optimizing algorithms, exploring model compression, or crafting intuitive UIs, I’m driven by the challenge of turning complex technical ideas into fast, reliable, and production-ready software.",
+  email: "vedhanthmanju@gmail.com",
+  github: "https://github.com/vedhanth66",
+  linkedin: "https://www.linkedin.com/in/vedhanth-m-703131300/",
+  scholar: "https://scholar.google.com/citations?user=hoIjSQgAAAAJ&hl=en",
   resumeLink: "#"
 };
 
