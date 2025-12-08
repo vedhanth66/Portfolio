@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Github, Linkedin, scholar, Mail, FileText } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, GraduationCap, Mail, FileText } from 'lucide-react';
 import { Button } from './ui/button';
 import { personalInfo } from '../mock';
 
@@ -113,7 +113,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="p-3 bg-gray-800 hover:bg-cyan-500/20 border border-gray-700 hover:border-cyan-500 rounded-lg transition-all duration-300 hover:scale-110 group"
               >
-                <scholar className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                <GraduationCap className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
               </a>
             </div>
           </div>

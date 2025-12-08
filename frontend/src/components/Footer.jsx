@@ -82,9 +82,6 @@ const Footer = () => {
             <p className="text-gray-500 text-sm text-center md:text-left">
               © {currentYear} {personalInfo.name}. All rights reserved.
             </p>
-            <p className="text-gray-500 text-sm flex items-center gap-1">
-              Built with <Heart className="w-4 h-4 text-red-500 fill-current animate-pulse" /> and React
-            </p>
           </div>
         </div>
       </div>

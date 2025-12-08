@@ -5,10 +5,17 @@ import { personalInfo, currentFocus } from '../mock';
 
 const About = () => {
   const timeline = [
-    { year: '2023', event: 'Started B.Tech CSE at University' },
-    { year: '2024', event: 'Began building full-stack projects' },
-    { year: '2024', event: 'Started research in AI/ML' },
-    { year: '2025', event: 'Currently in 2nd year, exploring opportunities' }
+    { year: '2024', event: 'Started B.Tech in Computer Science & Engineering at MIT Bengaluru' },
+    { year: '2024', event: 'Began strengthening programming fundamentals in C and C++' },
+    { year: '2024', event: 'Completed IBM Data Science Specialization (8 months)' },
+    { year: '2024', event: 'Built 6+ end-to-end software projects' },
+    { year: '2025', event: 'Completed Meta Full-Stack Development Specialization (6 months)' },
+    { year: '2025', event: 'Started my research journey in data pruning' },
+    { year: '2025', event: 'Published first conference paper at ICCCNT 2025' },
+    { year: '2025', event: 'Joined SHREE KARA KALAGRUHA as Founding Full Stack Developer' },
+    { year: '2025', event: 'Published a journal paper in IEEE Access' },
+    { year: '2025', event: 'Placed in the Top 10 at the Honeywell × SDG Hackathon' },
+    { year: '2025', event: 'Architected 4+ major, production-level projects' }
   ];
 
   return (
@@ -23,15 +30,8 @@ const About = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Left: Bio & Timeline */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-white">Who I Am</h3>
-              <p className="text-lg text-gray-400 leading-relaxed">
-                {personalInfo.bio}
-              </p>
-            </div>
 
+          <div className="space-y-8">
             {/* Timeline */}
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold text-white flex items-center">
@@ -103,7 +103,7 @@ const About = () => {
               <Card className="p-6 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/30 hover:border-blue-500 transition-all duration-300 hover:scale-105 group">
                 <div className="text-center">
                   <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform">
-                    9.5
+                    9.12
                   </div>
                   <p className="text-gray-400 font-medium">CGPA</p>
                 </div>

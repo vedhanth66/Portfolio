@@ -11,65 +11,105 @@ export const personalInfo = {
 };
 
 export const currentFocus = [
-  { label: "Working on", value: "Building scalable web applications with React & Node.js" },
-  { label: "Learning", value: "Machine Learning, System Design, Cloud Architecture" },
-  { label: "Aiming for", value: "SDE internships and research opportunities in AI/ML" }
+  { label: "Working on", value: "Researching Adaptive Rank Pruning and its variations, and implementing this compression framework on Graph Neural Networks (GNNs)." },
+  { label: "Learning", value: "Diving into Graph Neural Networks, core Machine Learning concepts, practical Image Processing workflows, and Computer Vision" },
+  { label: "Aiming for", value: "Seeking Software Engineering Internships and R&D roles in high-impact, real-world environments." }
 ];
 
 export const projects = [
   {
     id: 1,
-    title: "Real-Time Collaboration Platform",
-    description: "A web-based collaborative workspace with live editing, video conferencing, and project management features.",
-    techStack: ["React", "Node.js", "Socket.IO", "MongoDB", "WebRTC"],
+    title: "GlideSight",
+    description: "GlideSight is an advanced runway detection system developed for the 48-hour Honeywell Hackathon, where it was recognized as a Top 10 project. This system leverages deep learning and computer vision to enhance aviation safety by accurately identifying and analyzing airport runways from aerial imagery.",
+    techStack: ["yolo", "FastAPI ", "Python", "UNET", "OpenCV", "tensor", "TensorFlow", "Matplotlib", "gradio", "Computer vision"],
     highlights: [
-      "Built real-time synchronization engine handling 1000+ concurrent users",
-      "Implemented end-to-end encryption for secure communications",
-      "Reduced latency by 40% through optimized WebSocket connections"
+      "Accurate Runway Segmentation: Utilizes a UNet deep learning model with a ResNet34 backbone, implemented in PyTorch, to perform precise semantic segmentation of runways.",
+      "Geometric Analysis: Employs computer vision techniques with OpenCV to process the model's output, identifying the runway's contours and calculating the precise coordinates of its left edge, right edge, and centerline.",
+      "Interactive Analytics Dashboard: Features a comprehensive and user-friendly dashboard built with Gradio. This interface allows users to upload an image and receive a detailed analysis",
+      "Real-time Feedback: The system provides immediate visual and quantitative feedback, making it a valuable tool for analysis and validation."
     ],
-    github: "https://github.com/vedhanth/collab-platform",
-    demo: "https://demo.example.com",
+    github: "https://github.com/vedhanth66?tab=repositories",
+    demo: null,
     featured: true
   },
   {
     id: 2,
-    title: "AI-Powered Code Review Assistant",
-    description: "Machine learning tool that analyzes code quality, suggests improvements, and detects potential bugs.",
-    techStack: ["Python", "FastAPI", "PyTorch", "Transformers", "React"],
+    title: "Shree Kara Kalagruha: A Full-Stack A/V Content Platform for Artists",
+    description: "Shree Kara Studios is a comprehensive audio/visual content management system that provides a platform for artists to upload, manage, and showcase their creative work. The platform features a sleek and intuitive interface that allows users to seamlessly upload and categorize their content, including images, videos, poems, and music. The frontend is built with React and features a dynamic and engaging user experience, while the backend is powered by a robust Python-based API that ensures secure and efficient content management.",
+    techStack: ["React", "React Router", "Axios", "CSS", "Python", "FastAPI", "MongoDB", "JWT (JSON Web Tokens)", "JavaScript", "Django", "Express.js", "Node.js"],
     highlights: [
-      "Fine-tuned CodeBERT model achieving 87% accuracy in bug detection",
-      "Integrated with GitHub Actions for automated code reviews",
-      "Reduced review time by 60% for development teams"
+      "Secure Authentication: The platform features a secure authentication system that allows artists to create an account and log in to manage their content.",
+      "A/V Content Uploads: The platform supports a wide range of audio/visual content, including images, videos, poems, and music.",
+      "Content Management: The platform provides a comprehensive content management system that allows artists to edit, delete, and categorize their content.",
+      "Public-Facing Gallery: The platform features a public-facing gallery where artists can showcase their work to a wider audience.",
+      "Target-Based Filtering: The platform allows users to filter content by target, making it easy to find specific types of content."
     ],
-    github: "https://github.com/vedhanth/code-assistant",
+    github: "https://github.com/vedhanth66?tab=repositories",
     demo: null,
     featured: true
   },
   {
     id: 3,
-    title: "Campus Event Management System",
-    description: "Full-stack platform for organizing and managing college events with registration, ticketing, and analytics.",
-    techStack: ["React", "Django", "PostgreSQL", "Redis", "AWS"],
+    title: "Real-time Chess Platform",
+    description: "Real-Time Multiplayer Chess Game | Full Stack Project Designed and developed a full-stack real-time multiplayer chess game with dynamic player connection, game state management, and spectator mode.",
+    techStack: ["JavaScript", "HTML", "CSS", "Node.js", "Express.js", "Socket.IO"],
     highlights: [
-      "Handles 5000+ student registrations with 99.9% uptime",
-      "Built dynamic QR code-based check-in system",
-      "Implemented real-time analytics dashboard for organizers"
+      "Real-time gameplay using Socket.IO for seamless peer-to-peer connection.",
+      "Supports multiplayer logic with automatic player role assignment (White, Black, Spectator).",
+      "Displays live game status updates like Check, Checkmate, Draw.",
+      "Spectator mode with real-time board updates and game state tracking.",
+      "Intuitive and responsive chessboard UI built with HTML, CSS, and client-side JavaScript.",
+      "Backend handled via Node.js and Express to manage sockets, game states, and player connections."
     ],
-    github: "https://github.com/vedhanth/event-system",
-    demo: "https://events.example.com",
-    featured: false
+    github: "https://github.com/vedhanth66?tab=repositories",
+    demo: null,
+    featured: true
   },
   {
     id: 4,
-    title: "Smart Study Planner",
-    description: "AI-driven study schedule optimizer that adapts to learning patterns and exam deadlines.",
-    techStack: ["React Native", "Node.js", "MongoDB", "TensorFlow.js"],
+    title: "Little Lemon UI/UX Design",
+    description: "In this project, I applied comprehensive UI/UX design methodologies to create a seamless user experience for Little Lemon",
+    techStack: ["Figma"],
     highlights: [
-      "Personalized study recommendations using ML algorithms",
-      "Cross-platform mobile app with 10k+ downloads",
-      "Improved study efficiency by 35% based on user feedback"
+      "Journey Map: Mapped out the user’s interactions, pain points, and motivations throughout their experience with the product.",
+      "User Persona: Developed a detailed persona to represent the target audience, ensuring the design met their needs and goals.",
+      "Wireframes: Created low-fidelity wireframes to lay the foundation for the layout and functionality.",
+      "Prototypes: Designed interactive prototypes that enabled testing and refinement of the user interface before final development.",
+      "This project emphasized user-centered design principles and iterative testing to create intuitive, user-friendly solutions."
     ],
-    github: "https://github.com/vedhanth/study-planner",
+    github: "https://github.com/vedhanth66?tab=repositories",
+    demo: null,
+    featured: true
+  },
+  {
+    id: 5,
+    title: "Spotify - clone",
+    description: "A Spotify clone that dynamically updates songs and posters based on the music added to a local folder, integrated using JSON.",
+    techStack: ["JavaScript", "HTML", "CSS", "JSON"],
+    highlights: [
+      "Functional buttons including Play, Pause, Seek Bar, and Volume Control.",
+      "Real-time song updates: Songs and album covers are automatically updated when new files are added to the system’s music folder.",
+      "A user-friendly interface with separate playlists for English, Hindi, Kannada, and Telugu songs.",
+      "Built using HTML, CSS, JavaScript, and JSON integration, no external API required.",
+      "It is completely responsive. Looks stunning on all screen sizes"
+    ],
+    github: "https://github.com/vedhanth66?tab=repositories",
+    demo: null,
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Weather App",
+    description: "Built a Weather App that provides real-time weather updates using an external API.",
+    techStack: ["JavaScript", "HTML", "CSS", "API"],
+    highlights: [
+      "Users can search for the weather by city name.",
+      "Integrated a weather API to fetch current conditions, temperature, humidity, and weather forecasts.",
+      "Clean and responsive UI for easy viewing on both desktop and mobile devices.",
+      "Error handling for invalid inputs (e.g., city not found).",
+      "Used JavaScript to manage API requests and dynamically display weather data."
+    ],
+    github: "https://github.com/vedhanth66?tab=repositories",
     demo: null,
     featured: false
   }
@@ -78,110 +118,83 @@ export const projects = [
 export const research = [
   {
     id: 1,
-    title: "Efficient Model Compression Techniques for Edge Computing",
-    authors: "Vedhanth M, Dr. Smith J, Dr. Brown K",
-    venue: "International Conference on Machine Learning (ICML)",
-    year: 2024,
-    summary: "Proposed novel pruning algorithm reducing model size by 70% while maintaining 95% accuracy for deployment on resource-constrained devices.",
-    tags: ["Model Compression", "Edge Computing", "Deep Learning"],
-    paperLink: "#",
-    codeLink: "https://github.com/vedhanth/model-compression",
-    citations: 12
-  },
-  {
-    id: 2,
-    title: "Attention-Based Sentiment Analysis for Code Review Comments",
-    authors: "Vedhanth M, Dr. Johnson A",
-    venue: "ACM Conference on Software Engineering",
-    year: 2024,
-    summary: "Developed transformer-based model for classifying developer sentiment in code reviews, achieving state-of-the-art F1 score of 0.89.",
-    tags: ["NLP", "Sentiment Analysis", "Software Engineering"],
-    paperLink: "#",
-    codeLink: "https://github.com/vedhanth/sentiment-code-review",
-    citations: 8
+    title: "Adaptive Rank Pruning: Dynamic Low-Rank Model Merging and Compression for Efficient AI Deployment",
+    authors: "Vedhanth M, Dr. S. Mahadevi, Dr. Anil Kumar",
+    venue: "IEEE Access",
+    year: 2025,
+    summary: "This work introduces Adaptive Rank Pruning (ARP), a unified framework that merges multiple task-specific models and applies dynamic, layer-wise compression using a variance-thresholding criterion to optimize deployment. The method achieves up to 2.5x model size reduction with minimal accuracy loss, outperforming state-of-the-art baselines like LoRA and QLoRA in inference latency and energy efficiency on edge hardware.",
+    tags : [
+    "Accuracy",
+    "Adaptive rank pruning",
+    "Compression ratios",
+    "Constrained settings",
+    "Fine-tuned models",
+    "Large pre-trained models",
+    "Low-rank approximation",
+    "Model compression",
+    "Model merging",
+    "Neural networks",
+    "Resource demands",
+    "Singular value decomposition",
+    "Stability",
+    "Trade-offs",
+    "Variance thresholds",
+    "Parameter-Efficient Fine-Tuning (PEFT)",
+    "Edge deployment"
+],
+    paperLink: "https://ieeexplore.ieee.org/abstract/document/11199315",
+    citations: 0
   }
 ];
 
 export const researchStats = {
   publications: 2,
-  citations: 20,
-  hIndex: 2
+  citations: 0,
+  hIndex: 0
 };
 
 export const experience = [
   {
     id: 1,
-    role: "Software Engineering Intern",
-    organization: "Tech Innovations Ltd.",
-    duration: "Jun 2024 - Aug 2024",
+    role: "Founding Full Stack Developer",
+    organization: "Shree Kara Kalagruha",
+    duration: "Jun 2025 - present",
     responsibilities: [
-      "Developed microservices architecture handling 100k+ daily requests",
-      "Optimized database queries reducing response time by 50%",
-      "Collaborated with cross-functional team of 8 developers using Agile methodology"
-    ]
-  },
-  {
-    id: 2,
-    role: "Research Assistant",
-    organization: "University AI Lab",
-    duration: "Jan 2024 - Present",
-    responsibilities: [
-      "Conducting research on efficient neural network architectures",
-      "Published 2 papers in top-tier conferences",
-      "Mentoring 3 junior students on ML projects"
-    ]
-  },
-  {
-    id: 3,
-    role: "Technical Lead",
-    organization: "College Coding Club",
-    duration: "Aug 2023 - Present",
-    responsibilities: [
-      "Leading team of 15 students in organizing hackathons and workshops",
-      "Conducted 20+ technical sessions on web development and algorithms",
-      "Increased club membership by 200% through innovative initiatives"
+      "Developed the official website for Shree Kara Kalagruha, a creative cinematography and arts company.",
+      "Began from a blank canvas and has grown into a full-stack content platform",
+      "I continue to manage and expand."
     ]
   }
 ];
 
 export const skills = {
-  languages: ["C", "C++", "Python", "JavaScript", "TypeScript", "Java", "SQL"],
-  frameworks: ["React", "Node.js", "Express", "Django", "FastAPI", "Next.js", "React Native"],
-  databases: ["MongoDB", "PostgreSQL", "MySQL", "Redis"],
-  tools: ["Git", "GitHub", "Docker", "AWS", "Linux", "VS Code", "Postman"],
-  concepts: ["Data Structures", "Algorithms", "OOP", "System Design", "REST APIs", "Microservices"],
-  aiml: ["PyTorch", "TensorFlow", "scikit-learn", "NLP", "Computer Vision", "Transformers"]
+  languages: ["C", "C++", "Python", "JavaScript", "Java", "SQL", "Swift"],
+  frameworks: ["React", "Node.js", "Express", "Django", "FastAPI", "Next.js", "React Native", "Numpy", "Pandas", "Matplotlib", "Seaborn"],
+  databases: ["MongoDB", "MySQL"],
+  tools: ["Git", "GitHub", "VS Code"],
+  concepts: ["Data Structures", "Algorithms", "OOP", "System Design", "REST APIs"],
+  aiml: ["PyTorch", "TensorFlow", "scikit-learn", "NLP", "Computer Vision", "Transformers", "LLM", "OpenCV", "Yolo"]
 };
 
 export const achievements = [
   {
     id: 1,
-    title: "Smart India Hackathon 2024 - Winner",
-    description: "Led team to first place among 500+ teams with AI-powered healthcare solution"
+    title: "Honeywell SDG Hackathon - Finished in top 10",
+    description: "Led team to top 10 place among 100+ teams with runway detection"
   },
   {
     id: 2,
-    title: "Google Summer of Code 2024",
-    description: "Selected as GSoC contributor for open-source ML project"
+    title: "University top ranker",
+    description: "Outstanding academic performer - CGPA: 9.12"
   },
   {
     id: 3,
-    title: "University Gold Medal",
-    description: "Awarded for outstanding academic performance (CGPA: 9.5/10)"
+    title: "Research publication",
+    description: "Multiple papers are accepted at top journals and conferences"
   },
   {
     id: 4,
-    title: "ACM ICPC Regionalist",
-    description: "Qualified for regional round in competitive programming"
-  },
-  {
-    id: 5,
-    title: "AWS Certified Solutions Architect",
-    description: "Professional certification in cloud architecture and deployment"
-  },
-  {
-    id: 6,
-    title: "Research Publication Award",
-    description: "Best paper award at International ML Conference 2024"
+    title: "Sports",
+    description: "State-level basketball and Intra-state badminton player"
   }
 ];
