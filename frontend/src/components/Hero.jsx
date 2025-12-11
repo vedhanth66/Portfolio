@@ -2,7 +2,6 @@ import React from 'react';
 import { ArrowRight, Github, Linkedin, GraduationCap, Mail, FileText } from 'lucide-react';
 import { Button } from './ui/button';
 import { personalInfo } from '../mock';
-import profileImg from '../assets/profile.JPG';
 
 const Hero = () => {
   const scrollToSection = (sectionId) => {
@@ -137,7 +136,7 @@ const Hero = () => {
                 <div className="relative w-100 h-100 rounded-3xl border-2 border-cyan-500/30 backdrop-blur-sm shadow-2xl shadow-cyan-500/20 overflow-hidden group-hover:border-cyan-500/60 transition-all duration-500 group-hover:scale-105">
                   {/* The Image */}
                   <img 
-                    src={profileImg} 
+                    src="\profile.JPG"
                     alt="Vedhanth" 
                     className="w-full h-full object-cover object-center" 
                   />
