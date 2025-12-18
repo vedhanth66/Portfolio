@@ -1,110 +1,226 @@
-import React from 'react';
-import { Github, ExternalLink, Star } from 'lucide-react';
-import { Card } from './ui/card';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
+import React, { useRef, useState } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { ArrowUpRight, Github, Star, ChevronRight } from 'lucide-react';
 import { projects } from '../mock';
 
 const Projects = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const [hoveredProject, setHoveredProject] = useState(null);
+  const [expandedProject, setExpandedProject] = useState(null);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] }
+    }
+  };
+
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-gray-900 to-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="relative py-32 bg-cream overflow-hidden"
+    >
+      {/* Background Pattern */}
+      <div className="absolute inset-0 dot-pattern opacity-30" />
+      
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Projects</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            A showcase of my technical work, from full-stack applications to AI-powered tools
-          </p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="mb-20"
+        >
+          <div className="flex items-center gap-4 mb-6">
+            <span className="w-16 h-px bg-charcoal" />
+            <span className="text-charcoal font-medium tracking-wider text-sm uppercase">Selected Work</span>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-charcoal">
+              Featured<br />
+              <span className="text-ash-dark italic font-light">Projects</span>
+            </h2>
+            <p className="text-charcoal max-w-md text-lg">
+              A showcase of technical work spanning full-stack applications to AI-powered tools
+            </p>
+          </div>
+        </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <Card
+        {/* Projects Grid - Bento Style */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          {projects.map((project, index) => (
+            <motion.article
               key={project.id}
-              className={`group relative overflow-hidden bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700 hover:border-cyan-500/50 transition-all duration-500 hover:shadow-2xl ${
-                project.featured ? 'hover:shadow-cyan-500/20' : 'hover:shadow-blue-500/20'
-              } hover:scale-[1.02]`}
+              variants={itemVariants}
+              className={`group relative ${
+                project.featured && index === 0 ? 'md:col-span-2' : ''
+              }`}
+              onMouseEnter={() => setHoveredProject(project.id)}
+              onMouseLeave={() => setHoveredProject(null)}
             >
-              {/* Featured Badge */}
-              {project.featured && (
-                <div className="absolute top-4 right-4 z-10">
-                  <Badge className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-0 flex items-center gap-1 animate-pulse">
-                    <Star className="w-3 h-3 fill-current" />
-                    Featured
-                  </Badge>
-                </div>
-              )}
+              <motion.div
+                className={`relative h-full p-8 md:p-10 rounded-3xl border transition-all duration-500 cursor-pointer ${
+                  project.featured
+                    ? 'bg-charcoal border-charcoal hover:border-sage'
+                    : 'bg-white border-ash/20 hover:border-sage/50 hover:shadow-editorial'
+                }`}
+                whileHover={{ y: -8 }}
+                onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
+              >
+                {/* Featured Badge */}
+                {project.featured && (
+                  <div className="absolute top-6 right-6">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-sage text-charcoal text-xs font-medium rounded-full">
+                      <Star className="w-3 h-3" />
+                      Featured
+                    </span>
+                  </div>
+                )}
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-blue-500/0 group-hover:from-cyan-500/5 group-hover:to-blue-500/5 transition-all duration-500"></div>
+                {/* Project Number */}
+                <span className={`font-display text-6xl md:text-7xl font-bold opacity-15 absolute top-4 left-6 ${
+                  project.featured ? 'text-sage-light' : 'text-charcoal'
+                }`}>
+                  {String(index + 1).padStart(2, '0')}
+                </span>
 
-              <div className="relative p-6 md:p-8 space-y-6">
-                {/* Header */}
-                <div className="space-y-3">
-                  <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
+                <div className="relative pt-12 space-y-6">
+                  {/* Title */}
+                  <h3 className={`font-display text-2xl md:text-3xl font-semibold transition-colors duration-300 ${
+                    project.featured
+                      ? 'text-cream group-hover:text-sage'
+                      : 'text-charcoal group-hover:text-sage-dark'
+                  }`}>
                     {project.title}
                   </h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    {project.description}
+
+                  {/* Description */}
+                  <p className={`text-base leading-relaxed ${
+                    project.featured ? 'text-ash' : 'text-charcoal'
+                  }`}>
+                    {project.description.slice(0, 150)}...
                   </p>
-                </div>
 
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((tech, index) => (
-                    <Badge
-                      key={index}
-                      variant="outline"
-                      className="border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-500 transition-all duration-300 cursor-default"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-
-                {/* Highlights */}
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider">Key Highlights</h4>
-                  <ul className="space-y-2">
-                    {project.highlights.map((highlight, index) => (
-                      <li key={index} className="flex items-start text-gray-400 text-sm">
-                        <span className="inline-block w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span>{highlight}</span>
-                      </li>
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.slice(0, 5).map((tech, i) => (
+                      <span
+                        key={i}
+                        className={`px-3 py-1 text-xs font-medium rounded-full transition-colors ${
+                          project.featured
+                            ? 'bg-sage/20 text-sage border border-sage/30'
+                            : 'bg-charcoal/5 text-charcoal border border-charcoal/10'
+                        }`}
+                      >
+                        {tech}
+                      </span>
                     ))}
-                  </ul>
+                    {project.techStack.length > 5 && (
+                      <span className={`px-3 py-1 text-xs rounded-full ${
+                        project.featured ? 'text-ash' : 'text-charcoal-light'
+                      }`}>
+                        +{project.techStack.length - 5} more
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Expandable Highlights */}
+                  <AnimatePresence>
+                    {expandedProject === project.id && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className={`pt-4 border-t ${
+                          project.featured ? 'border-ash/20' : 'border-charcoal/10'
+                        }`}>
+                          <h4 className={`text-sm font-medium uppercase tracking-wider mb-3 ${
+                            project.featured ? 'text-sage' : 'text-charcoal'
+                          }`}>
+                            Key Highlights
+                          </h4>
+                          <ul className="space-y-2">
+                            {project.highlights.slice(0, 3).map((highlight, i) => (
+                              <li key={i} className={`flex items-start gap-2 text-sm ${
+                                project.featured ? 'text-ash' : 'text-charcoal'
+                              }`}>
+                                <ChevronRight className="w-4 h-4 text-sage flex-shrink-0 mt-0.5" />
+                                {highlight}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Action Buttons */}
+                  <div className="flex items-center gap-4 pt-4">
+                    <motion.a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
+                        project.featured
+                          ? 'text-sage hover:text-sage-light'
+                          : 'text-charcoal hover:text-sage-dark'
+                      }`}
+                      onClick={(e) => e.stopPropagation()}
+                      whileHover={{ x: 4 }}
+                    >
+                      <Github className="w-4 h-4" />
+                      View Code
+                    </motion.a>
+                    {project.demo && (
+                      <motion.a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-sage text-charcoal text-sm font-medium rounded-full hover:bg-sage-light transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        Live Demo
+                        <ArrowUpRight className="w-4 h-4" />
+                      </motion.a>
+                    )}
+                  </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex flex-wrap gap-3 pt-4">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400 transition-all duration-300 group/btn"
-                    onClick={() => window.open(project.github, '_blank')}
-                  >
-                    <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
-                    View Code
-                  </Button>
-                  {project.demo && (
-                    <Button
-                      size="sm"
-                      className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 group/btn"
-                      onClick={() => window.open(project.demo, '_blank')}
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                      Live Demo
-                    </Button>
-                  )}
-                </div>
-              </div>
-            </Card>
+                {/* Hover Effect Line */}
+                <motion.div
+                  className={`absolute bottom-0 left-0 h-1 rounded-b-3xl ${
+                    project.featured ? 'bg-sage' : 'bg-sage-dark'
+                  }`}
+                  initial={{ width: 0 }}
+                  animate={{ width: hoveredProject === project.id ? '100%' : 0 }}
+                  transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                />
+              </motion.div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,59 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --charcoal: #2C3639;
+  --charcoal-light: #3F4E4F;
+  --charcoal-dark: #1A2223;
+  --sage: #84A98C;
+  --sage-light: #A3C4A9;
+  --sage-dark: #6B8B73;
+  --sand: #DEB887;
+  --sand-light: #E8CCA8;
+  --sand-dark: #C9A066;
+  --ash: #B2BEB5;
+  --ash-light: #CDD6CF;
+  --ash-dark: #8A9A8D;
+  --cream: #FAF9F6;
+  --cream-dark: #F0EDE6;
+  
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Space Grotesk', -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Inter', "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: #000000;
-    color: #ffffff;
+  font-family: var(--font-body);
+  background-color: var(--charcoal);
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+/* Grain Texture Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-
-@layer base {
-  :root {
-        --background: 0 0% 0%;
-        --foreground: 0 0% 100%;
-        --card: 0 0% 7%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 5%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 189 100% 50%;
-        --primary-foreground: 0 0% 0%;
-        --secondary: 0 0% 15%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 15%;
-        --muted-foreground: 0 0% 65%;
-        --accent: 189 100% 50%;
-        --accent-foreground: 0 0% 0%;
-        --destructive: 0 84% 60%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 20%;
-        --input: 0 0% 20%;
-        --ring: 189 100% 50%;
-        --chart-1: 189 100% 50%;
-        --chart-2: 217 91% 60%;
-        --chart-3: 270 65% 60%;
-        --chart-4: 330 75% 60%;
-        --chart-5: 280 70% 65%;
-        --radius: 0.5rem;
-    }
+/* Custom Selection */
+::selection {
+  background-color: var(--sage);
+  color: var(--charcoal);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
+::-moz-selection {
+  background-color: var(--sage);
+  color: var(--charcoal);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--charcoal-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sage);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sage-light);
+}
+
+/* Typography Base */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* Focus States */
+*:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+}
+
+/* Link Base */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button Reset */
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Section Base */
+section {
+  position: relative;
+}
+
+/* Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.text-charcoal { color: var(--charcoal); }
+.text-sage { color: var(--sage); }
+.text-sand { color: var(--sand); }
+.text-ash { color: var(--ash); }
+.text-cream { color: var(--cream); }
+
+.bg-charcoal { background-color: var(--charcoal); }
+.bg-charcoal-light { background-color: var(--charcoal-light); }
+.bg-charcoal-dark { background-color: var(--charcoal-dark); }
+.bg-sage { background-color: var(--sage); }
+.bg-sand { background-color: var(--sand); }
+.bg-cream { background-color: var(--cream); }
+
+/* Smooth Image Loading */
+img {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+img[data-loading="true"] {
+  opacity: 0;
 }

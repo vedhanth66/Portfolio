@@ -1,9 +1,19 @@
-import React from 'react';
-import { ArrowRight, Github, Linkedin, GraduationCap, Mail, FileText } from 'lucide-react';
-import { Button } from './ui/button';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowDown, Github, Linkedin, GraduationCap } from 'lucide-react';
 import { personalInfo } from '../mock';
 
 const Hero = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start']
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
+
   const scrollToSection = (sectionId) => {
     const element = document.querySelector(sectionId);
     if (element) {
@@ -11,151 +21,250 @@ const Hero = () => {
     }
   };
 
+  // Text animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.4, 0, 0.2, 1]
+      }
+    }
+  };
+
+  const letterVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: i * 0.04,
+        ease: [0.4, 0, 0.2, 1]
+      }
+    })
+  };
+
+  const name = personalInfo.name.split('');
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
+    <section
+      id="home"
+      ref={containerRef}
+      className="relative min-h-screen flex items-center overflow-hidden bg-charcoal"
+    >
+      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        {/* Large morphing shape */}
+        <motion.div
+          className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-gradient-to-br from-sage/10 to-transparent rounded-full animate-morph"
+          style={{ y }}
+        />
+        {/* Floating geometric shapes */}
+        {/* <motion.div
+          className="absolute top-1/4 left-[10%] w-20 h-20 border border-sage/20 rotate-45"
+          animate={{ rotate: [45, 90, 45], y: [-10, 10, -10] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        /> */}
+        <motion.div
+          className="absolute bottom-1/3 right-[15%] w-32 h-32 border border-sand/20 rounded-full"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/4 w-2 h-2 bg-sage rounded-full"
+          animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        {/* Horizontal lines */}
+        <div className="absolute top-[20%] left-0 w-1/3 h-px bg-gradient-to-r from-transparent via-sage/30 to-transparent" />
+        <div className="absolute bottom-[30%] right-0 w-1/4 h-px bg-gradient-to-l from-transparent via-sand/30 to-transparent" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 animate-fade-in">
-            <div className="space-y-4">
-              <div className="inline-flex items-center px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium backdrop-blur-sm animate-slide-up">
-                From prototypes to papers — building with purpose
-              </div>
-              
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight animate-slide-up" style={{ animationDelay: '0.1s' }}>
-                {''}
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                  {personalInfo.name}
-                </span>
+      <motion.div
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-20"
+        style={{ opacity, scale }}
+      >
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[80vh]">
+          {/* Left Content - Text */}
+          <motion.div
+            className="lg:col-span-7 space-y-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Tagline */}
+            <motion.div
+              variants={itemVariants}
+              className="inline-flex items-center gap-3"
+            >
+              <span className="w-12 h-px bg-sage" />
+              <span className="text-sage font-medium tracking-wider text-sm uppercase">
+                Portfolio 2025
+              </span>
+            </motion.div>
+
+            {/* Main Title - Character by Character Animation */}
+            <div className="overflow-hidden">
+              <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-semibold text-cream leading-[0.9] tracking-tight">
+                {name.map((letter, i) => (
+                  <motion.span
+                    key={i}
+                    custom={i}
+                    variants={letterVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="inline-block"
+                    style={{ display: letter === ' ' ? 'inline' : 'inline-block' }}
+                  >
+                    {letter === ' ' ? '\u00A0' : letter}
+                  </motion.span>
+                ))}
               </h1>
-              
-              <p className="text-2xl md:text-3xl font-semibold text-gray-300 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            </div>
+
+            {/* Subtitle with gradient */}
+            <motion.div variants={itemVariants} className="space-y-4">
+              <p className="font-display text-2xl md:text-3xl lg:text-4xl font-light text-ash italic">
                 {personalInfo.title}
               </p>
-              
-              <p className="text-xl text-cyan-400 font-medium animate-slide-up" style={{ animationDelay: '0.3s' }}>
+              <p className="text-lg md:text-xl text-sage font-medium">
                 {personalInfo.tagline}
               </p>
-              
-              <p className="text-lg text-gray-400 leading-relaxed max-w-2xl animate-slide-up" style={{ animationDelay: '0.4s' }}>
-                {personalInfo.bio}
-              </p>
-            </div>
+            </motion.div>
 
-            {/* Quick Highlights */}
-            <div className="flex flex-wrap gap-3 animate-slide-up" style={{ animationDelay: '0.5s' }}>
-              <div className="px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-lg backdrop-blur-sm">
-                <span className="text-cyan-400 font-semibold">10+ Projects</span>
-              </div>
-              <div className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-lg backdrop-blur-sm">
-                <span className="text-blue-400 font-semibold">45+ certifications</span>
-              </div>
-              <div className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg backdrop-blur-sm">
-                <span className="text-purple-400 font-semibold">IEEE access Journal paper</span>
-              </div>
-            </div>
+            {/* Description */}
+            <motion.p
+              variants={itemVariants}
+              className="text-ash/80 text-lg leading-relaxed max-w-2xl"
+            >
+              {personalInfo.bio.slice(0, 200)}...
+            </motion.p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 animate-slide-up" style={{ animationDelay: '0.6s' }}>
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 hover:scale-105 group"
-                onClick={() => scrollToSection('#projects')}
-              >
-                View Projects
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/30 group"
-                onClick={() => window.open(personalInfo.resumeLink, '_blank')}
-              >
-                <FileText className="mr-2 w-5 h-5" />
-                Download Resume
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-purple-500 text-purple-400 hover:bg-purple-500/10 font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/30"
-                onClick={() => scrollToSection('#contact')}
-              >
-                <Mail className="mr-2 w-5 h-5" />
-                Contact Me
-              </Button>
-            </div>
-
-            <div className="flex items-center gap-4 animate-slide-up" style={{ animationDelay: '0.7s' }}>
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-gray-800 hover:bg-cyan-500/20 border border-gray-700 hover:border-cyan-500 rounded-lg transition-all duration-300 hover:scale-110 group"
-              >
-                <Github className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
-              </a>
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-gray-800 hover:bg-blue-500/20 border border-gray-700 hover:border-blue-500 rounded-lg transition-all duration-300 hover:scale-110 group"
-              >
-                <Linkedin className="w-6 h-6 text-gray-400 group-hover:text-blue-400 transition-colors" />
-              </a>
-              <a
-                href={personalInfo.scholar}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-gray-800 hover:bg-cyan-500/20 border border-gray-700 hover:border-cyan-500 rounded-lg transition-all duration-300 hover:scale-110 group"
-              >
-                <GraduationCap className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
-              </a>
-            </div>
-          </div>
-
-          {/* Right Content - Your Photo */}
-          <div className="hidden lg:flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.8s' }}>
-            <div className="relative w-full max-w-lg flex items-center justify-center">
-              {/* Glowing orbs background (Keep this for the cool effect) */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-96 h-96 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-80 h-80 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
-              </div>
-              
-              {/* Photo Container */}
-              <div className="relative z-10 group">
-
-                {/* Main Image Frame */}
-                <div className="relative w-100 h-100 rounded-3xl border-2 border-cyan-500/30 backdrop-blur-sm shadow-2xl shadow-cyan-500/20 overflow-hidden group-hover:border-cyan-500/60 transition-all duration-500 group-hover:scale-105">
-                  {/* The Image */}
-                  <img 
-                    src="\profile.JPG"
-                    alt="Vedhanth" 
-                    className="w-full h-full object-cover object-center" 
-                  />
-                  
-                  {/* Overlay Gradient (Optional: Adds a subtle tint to match the theme) */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
+            {/* Stats */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-8 pt-4"
+            >
+              {[
+                { value: '10+', label: 'Projects' },
+                { value: '45+', label: 'Certifications' },
+                { value: '2', label: 'Publications' }
+              ].map((stat, index) => (
+                <div key={index} className="group">
+                  <span className="block font-display text-4xl md:text-5xl font-semibold text-cream group-hover:text-sage transition-colors duration-300">
+                    {stat.value}
+                  </span>
+                  <span className="text-ash text-sm uppercase tracking-wider">
+                    {stat.label}
+                  </span>
                 </div>
+              ))}
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center gap-4 pt-4"
+            >
+              {[
+                { icon: Github, href: personalInfo.github, label: 'GitHub' },
+                { icon: Linkedin, href: personalInfo.linkedin, label: 'LinkedIn' },
+                { icon: GraduationCap, href: personalInfo.scholar, label: 'Scholar' }
+              ].map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-3 border border-ash/30 rounded-full hover:border-sage hover:bg-sage/10 transition-all duration-300"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5 text-ash group-hover:text-sage transition-colors" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Right Content - Artistic Photo */}
+          <motion.div
+            className="lg:col-span-5 relative"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <div className="relative w-full max-w-md mx-auto">
+              {/* Decorative frame elements */}
+              <motion.div
+                className="absolute -inset-4 border border-sage/30 rounded-3xl"
+                animate={{ rotate: [0, 2, 0, -2, 0] }}
+                transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <motion.div
+                className="absolute -inset-8 border border-sand/20 rounded-3xl"
+                animate={{ rotate: [0, -2, 0, 2, 0] }}
+                transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              
+              {/* Main image container*/}
+              <div className="relative rounded-2xl overflow-hidden aspect-[3/4]">
+                
+                {/* The Image */}
+                <img
+                  src="/profile.JPG"
+                  alt={personalInfo.name}
+                  className="w-full h-full object-cover filter contrast-[0.8]"
+                />
+                
+                {/* Corner accents */}
+                <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-sage z-20" />
+                <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-sand z-20" />
               </div>
+              
+              {/* Floating badge */}
+              <motion.div
+                className="absolute -bottom-6 -left-6 px-6 py-3 bg-sage text-charcoal rounded-full font-medium text-sm shadow-editorial"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                Available for work
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-cyan-500/50 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-cyan-400 rounded-full animate-scroll"></div>
-        </div>
-      </div>
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+        onClick={() => scrollToSection('#about')}
+      >
+        <span className="text-ash text-xs uppercase tracking-[0.3em]">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <ArrowDown className="w-5 h-5 text-sage" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

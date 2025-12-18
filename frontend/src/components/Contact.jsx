@@ -1,11 +1,12 @@
-import React from 'react';
-import { Mail, Github, Linkedin, GraduationCap, Copy, Check } from 'lucide-react';
-import { Card } from './ui/card';
-import { Button } from './ui/button';
+import React, { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Mail, Github, Linkedin, GraduationCap, Copy, Check, ArrowUpRight, Send } from 'lucide-react';
 import { personalInfo } from '../mock';
 
 const Contact = () => {
-  const [emailCopied, setEmailCopied] = React.useState(false);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
@@ -18,116 +19,197 @@ const Contact = () => {
       name: 'GitHub',
       icon: Github,
       url: personalInfo.github,
-      color: 'from-gray-400 to-gray-600',
-      hoverColor: 'hover:border-gray-400'
+      description: 'Check out my code'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
       url: personalInfo.linkedin,
-      color: 'from-blue-400 to-blue-600',
-      hoverColor: 'hover:border-blue-400'
+      description: 'Connect professionally'
     },
     {
       name: 'Google Scholar',
       icon: GraduationCap,
       url: personalInfo.scholar,
-      color: 'from-green-400 to-green-600',
-      hoverColor: 'hover:border-green-400'
+      description: 'View my research'
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+    }
+  };
+
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="contact"
+      ref={sectionRef}
+      className="relative py-32 bg-cream overflow-hidden"
+    >
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/3 w-1/3 h-1/2 bg-sage/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-1/4 h-1/3 bg-sand/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Get In <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Touch</span>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <div className="inline-flex items-center gap-4 mb-6">
+            <span className="w-16 h-px bg-charcoal" />
+            <span className="text-charcoal font-medium tracking-wider text-sm uppercase">Get In Touch</span>
+            <span className="w-16 h-px bg-charcoal" />
+          </div>
+          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-charcoal">
+            Let's Work<br />
+            <span className="text-ash-dark italic font-light">Together</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Open to internships, research positions, and collaborations
+          <p className="mt-6 text-charcoal text-lg max-w-xl mx-auto">
+            Open to internships, research positions, and collaborations on exciting projects
           </p>
-        </div>
+        </motion.div>
 
-        <div className="max-w-4xl mx-auto">
-          {/* Email Card */}
-          <Card className="p-8 md:p-12 mb-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700 hover:border-cyan-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 text-center group">
-            <div className="space-y-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full flex items-center justify-center border border-cyan-500/30 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                <Mail className="w-8 h-8 text-cyan-400" />
-              </div>
-              
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-2">Email Me</h3>
-                <a
-                  href={`mailto:${personalInfo.email}`}
-                  className="text-lg text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
-                >
-                  {personalInfo.email}
-                </a>
-              </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="max-w-4xl mx-auto"
+        >
+          {/* Email Card - Main CTA */}
+          <motion.div
+            variants={itemVariants}
+            className="relative p-10 md:p-16 rounded-[2rem] bg-charcoal mb-8 overflow-hidden group"
+          >
+            {/* Background decoration */}
+            <div className="absolute inset-0 bg-gradient-to-br from-sage/10 via-transparent to-sand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            
+            <div className="relative text-center">
+              {/* Icon */}
+              <motion.div
+                className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-sage/20 mb-8"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Mail className="w-10 h-10 text-sage" />
+              </motion.div>
 
-              <Button
+              {/* Email */}
+              <h3 className="font-display text-3xl md:text-4xl font-semibold text-cream mb-4">
+                Say Hello
+              </h3>
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="text-xl md:text-2xl text-sage hover:text-sage-light transition-colors font-medium"
+              >
+                {personalInfo.email}
+              </a>
+
+              {/* Copy Button */}
+              <motion.button
                 onClick={handleCopyEmail}
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 hover:scale-105"
+                className="ml-3 mt-8 inline-flex items-center gap-2 px-6 py-3 bg-sage text-charcoal font-medium rounded-full hover:bg-sage-light transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
               >
                 {emailCopied ? (
                   <>
-                    <Check className="w-4 h-4 mr-2" />
+                    <Check className="w-4 h-4" />
                     Copied!
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4 mr-2" />
+                    <Copy className="w-4 h-4" />
                     Copy Email
                   </>
                 )}
-              </Button>
+              </motion.button>
+
+              {/* Or send directly */}
+              <div className="mt-6">
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="inline-flex items-center gap-2 text-ash hover:text-cream transition-colors"
+                >
+                  <Send className="w-4 h-4" />
+                  Or send directly
+                </a>
+              </div>
             </div>
-          </Card>
+
+            {/* Corner decorations */}
+            <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-sage/30 rounded-tl-2xl" />
+            <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-sand/30 rounded-br-2xl" />
+          </motion.div>
 
           {/* Social Links */}
-          <div className="grid md:grid-cols-3 gap-6">
-            {socialLinks.map((social) => {
+          <motion.div
+            variants={itemVariants}
+            className="grid md:grid-cols-3 gap-4"
+          >
+            {socialLinks.map((social, index) => {
               const Icon = social.icon;
               return (
-                <Card
+                <motion.a
                   key={social.name}
-                  className={`p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700 ${social.hoverColor} transition-all duration-500 hover:shadow-xl hover:scale-105 group cursor-pointer`}
-                  onClick={() => window.open(social.url, '_blank')}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-6 rounded-2xl bg-white border border-ash/10 hover:border-sage/30 transition-all duration-300 hover:shadow-editorial"
+                  whileHover={{ y: -4 }}
                 >
-                  <div className="text-center space-y-4">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${social.color} opacity-20 rounded-lg flex items-center justify-center border border-gray-600 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
-                      <Icon className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" />
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-charcoal/5 flex items-center justify-center group-hover:bg-sage/10 transition-colors">
+                      <Icon className="w-6 h-6 text-charcoal group-hover:text-sage transition-colors" />
                     </div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors">
-                        {social.name}
-                      </h4>
-                    </div>
+                    <ArrowUpRight className="w-5 h-5 text-ash group-hover:text-sage group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                   </div>
-                </Card>
+                  <h4 className="font-display text-lg font-semibold text-charcoal mb-1">
+                    {social.name}
+                  </h4>
+                  <p className="text-charcoal text-sm">
+                    {social.description}
+                  </p>
+                </motion.a>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Availability Banner */}
-          <div className="mt-12">
-            <Card className="p-6 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border-cyan-500/30 text-center">
-              <p className="text-lg text-gray-300">
-                <span className="inline-flex items-center">
-                  <span className="w-3 h-3 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                  Currently available for opportunities
-                </span>
+          <motion.div
+            variants={itemVariants}
+            className="mt-12 p-6 rounded-2xl bg-sage/10 border border-sage/20 text-center"
+          >
+            <div className="flex items-center justify-center gap-3">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-sage"></span>
+              </span>
+              <p className="text-charcoal font-medium">
+                Currently available for opportunities
               </p>
-              <p className="text-sm text-gray-400 mt-2">
-                Looking for internships, research positions, and interesting projects to collaborate on
-              </p>
-            </Card>
-          </div>
-        </div>
+            </div>
+            <p className="text-charcoal text-sm mt-2">
+              Looking for internships, research positions, and interesting projects to collaborate on
+            </p>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
