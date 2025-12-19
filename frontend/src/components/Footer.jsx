@@ -15,6 +15,8 @@ const Footer = () => {
     { label: 'Projects', href: '#projects' },
     { label: 'Research', href: '#research' },
     { label: 'Experience', href: '#experience' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Awards', href: '#achievements' },
     { label: 'Contact', href: '#contact' }
   ];
 
@@ -69,7 +71,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div className="md:col-span-3">
             <h4 className="font-display text-lg font-semibold text-cream mb-6">Navigation</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <a
