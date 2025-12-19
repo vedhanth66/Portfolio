@@ -70,7 +70,7 @@ const Navbar = () => {
             <motion.a
               href="#home"
               onClick={(e) => scrollToSection(e, '#home')}
-              className="font-display text-xl md:text-2xl font-semibold text-cream hover:text-sage transition-colors duration-300"
+              className="font-display text-xl md:text-2xl font-semibold text-cream hover:text-sage transition-colors duration-300 relative z-50"
               whileHover={{ scale: 1.02 }}
             >
               <span className="text-sage">V</span>edhanth
@@ -121,7 +121,7 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="lg:hidden p-2 text-cream hover:text-sage transition-colors"
+              className="lg:hidden p-2 text-cream hover:text-sage transition-colors relative z-50"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
               whileTap={{ scale: 0.95 }}
@@ -142,20 +142,22 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 lg:hidden"
           >
-            <div className="absolute inset-0 bg-charcoal-dark/95 backdrop-blur-xl" />
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-xl" />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              className="relative h-full flex flex-col items-center justify-center gap-8"
+              // FIXED: Changed justify-center to justify-start, added padding-top, enabled scroll
+              className="relative h-full flex flex-col items-center justify-start pt-32 pb-10 overflow-y-auto gap-6"
             >
               {menuItems.map((item, index) => (
                 <motion.a
                   key={item.label}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className="font-display text-4xl md:text-5xl text-cream hover:text-sage transition-colors duration-300"
+                  // FIXED: Adjusted text size for smaller screens
+                  className="font-display text-3xl sm:text-4xl md:text-5xl text-cream hover:text-sage transition-colors duration-300"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 + 0.2 }}
@@ -167,7 +169,7 @@ const Navbar = () => {
                 href={personalInfo.resumeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 px-8 py-3 bg-sage text-charcoal font-medium rounded-full"
+                className="mt-4 px-8 py-3 bg-sage text-charcoal font-medium rounded-full shrink-0"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}

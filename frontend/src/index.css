@@ -19,6 +19,7 @@
   --ash-dark: #8A9A8D;
   --cream: #FAF9F6;
   --cream-dark: #F0EDE6;
+  --earth: #92735c;
   
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Space Grotesk', -apple-system, sans-serif;
@@ -134,6 +135,7 @@ section {
 .text-sand { color: var(--sand); }
 .text-ash { color: var(--ash); }
 .text-cream { color: var(--cream); }
+.text-earth { color: var(--earth); }
 
 .bg-charcoal { background-color: var(--charcoal); }
 .bg-charcoal-light { background-color: var(--charcoal-light); }

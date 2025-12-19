@@ -66,23 +66,22 @@ const Hero = () => {
       ref={containerRef}
       className="relative min-h-screen flex items-center overflow-hidden bg-charcoal"
     >
+      {/* Mobile Background Image - Added as requested */}
+      <div className="absolute inset-0 z-0 lg:hidden pointer-events-none">
+        <img 
+          src="/profile.JPG" 
+          alt="Background" 
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-charcoal/10" />
+      </div>
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Large morphing shape */}
         <motion.div
           className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-gradient-to-br from-sage/10 to-transparent rounded-full animate-morph"
           style={{ y }}
-        />
-        {/* Floating geometric shapes */}
-        {/* <motion.div
-          className="absolute top-1/4 left-[10%] w-20 h-20 border border-sage/20 rotate-45"
-          animate={{ rotate: [45, 90, 45], y: [-10, 10, -10] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        /> */}
-        <motion.div
-          className="absolute bottom-1/3 right-[15%] w-32 h-32 border border-sand/20 rounded-full"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.4, 0.2] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
           className="absolute top-1/2 left-1/4 w-2 h-2 bg-sage rounded-full"
@@ -119,7 +118,7 @@ const Hero = () => {
 
             {/* Main Title - Character by Character Animation */}
             <div className="overflow-hidden">
-              <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-semibold text-cream leading-[0.9] tracking-tight">
+              <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-[7rem] font-semibold text-cream leading-[0.9] tracking-tight whitespace-nowrap">
                 {name.map((letter, i) => (
                   <motion.span
                     key={i}
@@ -201,9 +200,9 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Artistic Photo */}
+          {/* Right Content - Artistic Photo (Hidden on Mobile) */}
           <motion.div
-            className="lg:col-span-5 relative"
+            className="hidden lg:block lg:col-span-5 relative"
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
@@ -237,13 +236,13 @@ const Hero = () => {
               </div>
               
               {/* Floating badge */}
-              <motion.div
+              {/* <motion.div
                 className="absolute -bottom-6 -left-6 px-6 py-3 bg-sage text-charcoal rounded-full font-medium text-sm shadow-editorial"
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               >
                 Available for work
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
         </div>

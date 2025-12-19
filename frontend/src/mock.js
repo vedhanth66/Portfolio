@@ -185,7 +185,7 @@ export const achievements = [
   {
     id: 2,
     title: "University top ranker",
-    description: "Outstanding academic performer - CGPA: 9.12"
+    description: "Outstanding academic performer - CGPA: 9.19"
   },
   {
     id: 3,
