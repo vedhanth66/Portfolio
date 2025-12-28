@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { BookOpen, ExternalLink, Quote, FileText, Users } from 'lucide-react';
+import { BookOpen, ExternalLink, Quote, FileText, Users, FilePen} from 'lucide-react';
 import { research, researchStats } from '../mock';
+import { Pen } from 'lucide-react';
 
 const Research = () => {
   const sectionRef = useRef(null);
@@ -60,10 +61,11 @@ const Research = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-3 gap-6 mb-16 max-w-2xl mx-auto"
+          className="grid grid-cols-4 gap-6 mb-16 max-w-2xl mx-auto"
         >
           {[
             { value: researchStats.publications, label: 'Publications', icon: FileText },
+            { value: researchStats.publicationsreviewed, label: 'Publications reviewed', icon: FilePen },
             { value: researchStats.citations, label: 'Citations', icon: Quote },
             { value: researchStats.hIndex, label: 'h-index', icon: Users }
           ].map((stat, index) => (

@@ -149,6 +149,7 @@ export const research = [
 
 export const researchStats = {
   publications: 2,
+  publicationsreviewed: 10,
   citations: 0,
   hIndex: 0
 };
@@ -168,12 +169,37 @@ export const experience = [
 ];
 
 export const skills = {
-  languages: ["C", "C++", "Python", "JavaScript", "Java", "SQL", "Swift"],
-  frameworks: ["React", "Node.js", "Express", "Django", "FastAPI", "Next.js", "React Native", "Numpy", "Pandas", "Matplotlib", "Seaborn"],
-  databases: ["MongoDB", "MySQL"],
-  tools: ["Git", "GitHub", "VS Code"],
-  concepts: ["Data Structures", "Algorithms", "OOP", "System Design", "REST APIs"],
-  aiml: ["PyTorch", "TensorFlow", "scikit-learn", "NLP", "Computer Vision", "Transformers", "LLM", "OpenCV", "Yolo"]
+  languages: [
+    "C", "C++", "Python", "JavaScript", "Java", "SQL", "Swift",
+    "HTML", "CSS", "MATLAB"
+  ],
+
+  frameworks: [
+    "React", "Node.js", "Express", "Django", "FastAPI",
+    "Next.js", "React Native", "Socket.IO",
+    "React Router", "Axios"
+  ],
+
+  databases: [
+    "MongoDB", "MySQL"
+  ],
+
+  tools: [
+    "Git", "GitHub", "VS Code", "Figma", "Simulink",
+    "NumPy", "Pandas", "Matplotlib", "Seaborn"
+  ],
+
+  concepts: [
+    "Data Structures", "Algorithms", "OOP", "System Design",
+    "REST APIs", "UI/UX Design", "Data Engineering", "API Development"
+  ],
+
+  aiml: [
+    "PyTorch", "TensorFlow", "scikit-learn", "NLP",
+    "Computer Vision", "Transformers", "LLMs",
+    "OpenCV", "YOLO", "U-Net", "CUDA",
+    "Deep Learning", "Machine Learning"
+  ]
 };
 
 export const achievements = [

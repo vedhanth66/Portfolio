@@ -106,9 +106,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-ash/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-ash/60 text-sm text-center md:text-left">
-              © {currentYear} {personalInfo.name}. Crafted with
-              <Heart className="w-4 h-4 inline-block mx-1 text-sage" fill="currentColor" />
-              and dedication.
+              © {currentYear} {personalInfo.name}
             </p>
             
             {/* Back to Top */}

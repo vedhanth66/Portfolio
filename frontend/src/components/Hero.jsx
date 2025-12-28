@@ -160,8 +160,9 @@ const Hero = () => {
             >
               {[
                 { value: '10+', label: 'Projects' },
-                { value: '45+', label: 'Certifications' },
-                { value: '2', label: 'Publications' }
+                { value: '50+', label: 'Certifications' },
+                { value: '2', label: 'Publications' },
+                { value: '10+', label: 'Publications Reviewed' }
               ].map((stat, index) => (
                 <div key={index} className="group">
                   <span className="block font-display text-4xl md:text-5xl font-semibold text-cream group-hover:text-sage transition-colors duration-300">

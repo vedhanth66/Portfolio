@@ -33,7 +33,8 @@ const About = () => {
     { value: '10+', label: 'Projects Built', color: 'sage' },
     { value: '2', label: 'Publications', color: 'sand' },
     { value: '9.19', label: 'CGPA', color: 'sage' },
-    { value: '6+', label: 'Achievements', color: 'sand' }
+    { value: '6+', label: 'Achievements', color: 'sand' },
+    { value: '10+', label: 'Publications Reviewed', color: 'sage' }
   ];
 
   const containerVariants = {
