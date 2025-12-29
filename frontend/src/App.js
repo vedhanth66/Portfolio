@@ -12,6 +12,7 @@ import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 // Trigger Vercel Rebuild
 function App() {
   const { scrollYProgress } = useScroll();
