@@ -47,6 +47,8 @@ function App() {
       <Achievements />
       <Contact />
       <Footer />
+      <SpeedInsights />
+      <Analytics />
     </div>
   );
 }
