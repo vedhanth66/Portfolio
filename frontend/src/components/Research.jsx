@@ -76,7 +76,7 @@ const Research = () => {
         >
           {[
             { value: researchStats.publications, label: 'Publications', icon: FileText },
-            { value: researchStats.publicationsreviewed, label: 'Reviewed', icon: FilePen },
+            { value: researchStats.publicationsreviewed, label: 'Publications Reviewed', icon: FilePen },
             { value: researchStats.citations, label: 'Citations', icon: Quote },
             { value: researchStats.hIndex, label: 'h-index', icon: Users }
           ].map((stat, index) => (
