@@ -61,7 +61,7 @@ const Research = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-3 gap-6 mb-16 max-w-2xl mx-auto"
+          className="grid grid-cols-4 gap-6 mb-16 max-w-2xl mx-auto"
         >
           {[
             { value: researchStats.publications, label: 'Publications', icon: FileText },
