@@ -106,7 +106,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-ash/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-ash/60 text-sm text-center md:text-left">
-              © {currentYear} {personalInfo.name}
+              © 2025 - {currentYear} {personalInfo.name}
             </p>
             
             {/* Back to Top */}
