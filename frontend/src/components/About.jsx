@@ -20,13 +20,13 @@ const About = () => {
     { year: '2024', event: 'Began strengthening programming fundamentals in C and C++' },
     { year: '2024', event: 'Completed IBM Data Science Specialization (8 months)' },
     { year: '2024', event: 'Built 6+ end-to-end software projects' },
-    { year: '2025', event: 'Completed Meta Full-Stack Development Specialization (6 months)' },
-    { year: '2025', event: 'Started my research journey in data pruning' },
-    { year: '2025', event: 'Published first conference paper at ICCCNT 2025' },
-    { year: '2025', event: 'Joined SHREE KARA KALAGRUHA as Founding Full Stack Developer' },
-    { year: '2025', event: 'Published a journal paper in IEEE Access' },
-    { year: '2025', event: 'Placed in the Top 10 at the Honeywell × SDG Hackathon' },
-    { year: '2025', event: 'Architected 4+ major, production-level projects' }
+    { year: '2026', event: 'Completed Meta Full-Stack Development Specialization (6 months)' },
+    { year: '2026', event: 'Started my research journey in data pruning' },
+    { year: '2026', event: 'Published first conference paper at ICCCNT 2026' },
+    { year: '2026', event: 'Joined SHREE KARA KALAGRUHA as Founding Full Stack Developer' },
+    { year: '2026', event: 'Published a journal paper in IEEE Access' },
+    { year: '2026', event: 'Placed in the Top 10 at the Honeywell × SDG Hackathon' },
+    { year: '2026', event: 'Architected 4+ major, production-level projects' }
   ];
 
   const stats = [

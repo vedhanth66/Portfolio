@@ -112,7 +112,7 @@ const Hero = () => {
             >
               <span className="w-12 h-px bg-sage" />
               <span className="text-sage font-medium tracking-wider text-sm uppercase">
-                Portfolio 2025
+                Portfolio 2026
               </span>
             </motion.div>
 
