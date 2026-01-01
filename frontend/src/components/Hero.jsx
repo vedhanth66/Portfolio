@@ -3,6 +3,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, GraduationCap } from 'lucide-react';
 import { personalInfo } from '../mock';
 
+const currentYear = new Date().getFullYear();
+
 const Hero = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -112,7 +114,7 @@ const Hero = () => {
             >
               <span className="w-12 h-px bg-sage" />
               <span className="text-sage font-medium tracking-wider text-sm uppercase">
-                Portfolio 2026
+                Portfolio {currentYear}
               </span>
             </motion.div>
 

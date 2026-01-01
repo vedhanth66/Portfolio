@@ -121,7 +121,7 @@ export const research = [
     title: "Adaptive Rank Pruning: Dynamic Low-Rank Model Merging and Compression for Efficient AI Deployment",
     authors: "Vedhanth M, Dr. S. Mahadevi, Dr. Anil Kumar",
     venue: "IEEE Access",
-    year: 2026,
+    year: 2025,
     summary: "This work introduces Adaptive Rank Pruning (ARP), a unified framework that merges multiple task-specific models and applies dynamic, layer-wise compression using a variance-thresholding criterion to optimize deployment. The method achieves up to 2.5x model size reduction with minimal accuracy loss, outperforming state-of-the-art baselines like LoRA and QLoRA in inference latency and energy efficiency on edge hardware.",
     tags : [
     "Accuracy",
@@ -159,7 +159,7 @@ export const experience = [
     id: 1,
     role: "Founding Full Stack Developer",
     organization: "Shree Kara Kalagruha",
-    duration: "Jun 2026 - present",
+    duration: "Jun 2025 - present",
     responsibilities: [
       "Developed the official website for Shree Kara Kalagruha, a creative cinematography and arts company.",
       "Began from a blank canvas and has grown into a full-stack content platform",
