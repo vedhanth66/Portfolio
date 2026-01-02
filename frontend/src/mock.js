@@ -7,7 +7,7 @@ export const personalInfo = {
   github: "https://github.com/vedhanth66",
   linkedin: "https://www.linkedin.com/in/vedhanth-m-703131300/",
   scholar: "https://scholar.google.com/citations?user=hoIjSQgAAAAJ&hl=en",
-  resumeLink: "#"
+  resumeLink: "Resume.pdf"
 };
 
 export const currentFocus = [
