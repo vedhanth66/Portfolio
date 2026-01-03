@@ -165,6 +165,17 @@ export const experience = [
       "Began from a blank canvas and has grown into a full-stack content platform",
       "I continue to manage and expand."
     ]
+  },
+  {
+  id: 2,
+  role: "Freelance Web Developer (Commercial Project)",
+  organization: "Matha Shree Annapoorneswari Mess",
+  duration: "Dec 2025 - Jan 2026",
+  responsibilities: [
+    "Architected and built a responsive Single Page Application (SPA) using React.js and Tailwind CSS, featuring a custom 'Leaf & Earth' design system.",
+    "Engineered custom React hooks (useIntersectionObserver) to drive high-performance, scroll-triggered animations and interactive UI elements.",
+    "Integrated Vercel Analytics for real-time user insights and implemented backend-connected forms for customer inquiries."
+    ]
   }
 ];
 
