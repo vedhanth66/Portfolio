@@ -26,7 +26,8 @@ const About = () => {
     { year: '2025', event: 'Joined SHREE KARA KALAGRUHA as Founding Full Stack Developer' },
     { year: '2025', event: 'Published a journal paper in IEEE Access' },
     { year: '2025', event: 'Placed in the Top 10 at the Honeywell × SDG Hackathon' },
-    { year: '2025', event: 'Architected 4+ major, production-level projects' }
+    { year: '2025', event: 'Architected 4+ major, production-level projects' },
+    { year: '2026', event: 'Built and deployed a commercial website for a restaurent'}
   ];
 
   const stats = [
